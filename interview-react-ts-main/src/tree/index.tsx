@@ -17,9 +17,10 @@ const Tree = () => {
   const renderTree = (node: TreeNode, level: number) => {
     return (
       <>
-        {/* Rendering the current node name with appropriate indentation */}
+        {/* Rendering the current node name with appropriate indentation and periods */}
         <div style={{ paddingLeft: `${level * 20}px` }}>
-          {node.name}
+          {node.name.substring(0, 1) + ".".repeat(level)}
+          {node.name.substring(1)}
           <br />
         </div>
         {/* Rendering children nodes recursively if present */}
@@ -33,8 +34,7 @@ const Tree = () => {
     );
   };
 
-  // Rendering the tree component
   return <div className="tree">{renderTree(treeData, 0)}</div>;
 };
 
-export default Tree; // Exporting the Tree component as default
+export default Tree;
